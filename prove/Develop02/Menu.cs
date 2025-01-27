@@ -3,7 +3,6 @@ public class Menu
     //public List<string> _selection; - do i even need this?
     public int _input;
 
-
     public int DisplayAndPrompt()
     {
         Console.WriteLine("Hello. Please make a selection based on what you'd like to do. (Enter an integer.)");
