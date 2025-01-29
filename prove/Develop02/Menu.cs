@@ -4,7 +4,7 @@ public class Menu
 
     public bool _quit = false;
 
-    public Entry _entry;
+    public Entry _entry = new();
 
     public void DisplayAndPrompt()
     {
