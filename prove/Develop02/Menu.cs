@@ -2,7 +2,7 @@ public class Menu
 {
     public int _input;
 
-    public bool _quit = true;
+    public bool _quit = false;
 
     public Entry _entry;
 
