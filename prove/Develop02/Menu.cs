@@ -8,12 +8,13 @@ public class Menu
 
     public void DisplayAndPrompt()
     {
-        Console.WriteLine("Hello. Please make a selection based on what you'd like to do. (Enter an integer.)");
+        Console.WriteLine("Please make a selection based on what you'd like to do. (Enter an integer.)");
         Console.WriteLine("1. Get prompt and respond.");
         Console.WriteLine("2. Open journal.");
         Console.WriteLine("3. Save (append) most recent prompt to journal.");
         Console.WriteLine("4. Quit");
 
+        Console.Write("Selection >> ");
         _input = int.Parse(Console.ReadLine());
     }
 
@@ -56,6 +57,11 @@ public class Menu
         {
             Console.WriteLine("Thanks for stopping by!");
             _quit = true;
+        }
+
+        else
+        {
+            Console.WriteLine("Not a valid response, please try something else.");
         }
     }
 }
