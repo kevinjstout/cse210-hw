@@ -20,9 +20,23 @@ class Program
         while (menu._quit == false)
         {
             menu.DisplayAndPrompt();
-            Console.WriteLine();
 
             menu.ExecuteSelection();
+
+            menu._input = 0;
         }
+
+        /*
+        Here is a list of functions that I added that go beyond the core requirements (though I hope just the first will suffice):
+
+        - Added option to merge two journals.
+            - This adds a method to the journal class, along with an option on the menu.
+            - It takes one journal file, then another, and adds their contents together (in order given).
+            - This new file is saved under a new prompted name.
+        - Added cool visuals
+            - Boxed in text 
+            - Ascii title
+        - General error handling to deal with invalid input so the program doesn't just crash.
+        */
     }
 }

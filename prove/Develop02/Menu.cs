@@ -6,16 +6,29 @@ public class Menu
 
     public Entry _entry = new();
 
+    public Journal _journal = new();
+
     public void DisplayAndPrompt()
     {
-        Console.WriteLine("Please make a selection based on what you'd like to do. (Enter an integer.)");
-        Console.WriteLine("1. Get prompt and respond.");
-        Console.WriteLine("2. Open journal.");
-        Console.WriteLine("3. Save (append) most recent prompt to journal.");
-        Console.WriteLine("4. Quit");
+        Console.WriteLine(" ____________________________________________________________________________");
+        Console.WriteLine("| Please make a selection based on what you'd like to do. (Enter an integer.)|");
+        Console.WriteLine("| 1. Get prompt and respond.                                                 |");
+        Console.WriteLine("| 2. Open journal.                                                           |");
+        Console.WriteLine("| 3. Save most recent prompt to journal (appends to or creates a file).      |");
+        Console.WriteLine("| 4. Merge two (pre-existing) journals.                                      |");
+        Console.WriteLine("| 5. Quit                                                                    |");
+        Console.WriteLine(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         Console.Write("Selection >> ");
-        _input = int.Parse(Console.ReadLine());
+        try
+        {
+            _input = int.Parse(Console.ReadLine());
+        }
+        catch
+        {
+            Console.WriteLine("Not a valid selection.");
+            Console.WriteLine();
+        }
     }
 
     public void ExecuteSelection()
@@ -26,42 +39,63 @@ public class Menu
 
             _entry._prompt = prompt;
             Console.WriteLine(prompt);
-
+            Console.Write("Response >> ");
             _entry._content = Console.ReadLine();
+            Console.WriteLine();
         }
 
         if (_input == 2)
         {
-            Journal journal = new();
-            
             Console.WriteLine("Please enter journal text file name (in this format: example.txt).");
-            journal._fileName = Console.ReadLine();
+            Console.Write("Journal Name >> ");
+            _journal._fileName = Console.ReadLine();
+            Console.WriteLine();
 
-            journal.Open();
+            _journal.Open();
+
+            Console.WriteLine();
         }
 
         if (_input == 3)
         {
-            Journal journal = new();
-            
             Console.WriteLine("Please enter journal text file name (in this format: example.txt) to save the entry to.");
-            journal._fileName = Console.ReadLine();
+            Console.Write("Journal Name >> ");
+            _journal._fileName = Console.ReadLine();
             
-            journal._currentEntry = _entry.PrettyText();
-            journal.Save();
+            _journal._currentEntry = _entry.PrettyText();
+            _journal.Save();
 
-            Console.WriteLine($"Most recent entry successfully saved to {journal._fileName}.");
+            Console.WriteLine($"Most recent entry successfully saved to {_journal._fileName}.");
+            Console.WriteLine();
         }
 
         if (_input == 4)
+        {
+            Console.WriteLine("Please enter first journal text file name (in this format: example.txt) to merge.");
+            Console.Write("First Journal Name >> ");
+            string firstJournal = Console.ReadLine();
+
+            Console.WriteLine("Please enter second journal text file name (in this format: example.txt) to merge.");
+            Console.Write("Second Journal Name >> ");
+            string secondJournal = Console.ReadLine();
+
+            Console.WriteLine("Please supply a name for the new, merged file (in this format: example.txt).");
+            Console.Write("New Journal Name >> ");
+            string mergedJournalName = Console.ReadLine();
+
+            _journal.Merge(firstJournal, secondJournal, mergedJournalName);
+        }
+
+        if (_input == 5)
         {
             Console.WriteLine("Thanks for stopping by!");
             _quit = true;
         }
 
-        else
+        if ((_input != 0) & (_input != 1) & (_input != 2) & (_input != 3) & (_input != 4) & (_input != 5))
         {
             Console.WriteLine("Not a valid response, please try something else.");
+            Console.WriteLine();
         }
     }
 }
