@@ -56,7 +56,7 @@ public class Fraction
 
     public double GetDecimalValue()
     {
-        double decimalVersion = _numerator / _denominator;
+        double decimalVersion = (double)_numerator / _denominator;
 
         return decimalVersion;
     }
