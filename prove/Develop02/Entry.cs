@@ -1,6 +1,3 @@
-using System.ComponentModel.Design;
-using System.Net.Mime;
-
 public class Entry
 {
     public string _content;
