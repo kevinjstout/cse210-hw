@@ -2,7 +2,7 @@ public class Journal
 {
     public string _fileName;
 
-    public string _currentEntry;
+    public List<Entry> _entries = new List<Entry>();
 
     public void Open()
     {
@@ -25,10 +25,13 @@ public class Journal
     public void Save()
     {
         try
-        {
+        {   
             using (StreamWriter outputFile = new StreamWriter(_fileName))
             {
-                outputFile.WriteLine(_currentEntry);
+                foreach (Entry entry in _entries)
+                {
+                    outputFile.WriteLine(entry.PrettyText());
+                }
             }
         }
         catch

@@ -4,8 +4,6 @@ public class Menu
 
     public bool _quit = false;
 
-    public List<Entry> _entries = new List<Entry>();
-
     public Journal _journal = new();
 
     public void DisplayAndPrompt()
@@ -46,7 +44,7 @@ public class Menu
             Console.Write("Response >> ");
             entry._content = Console.ReadLine();
 
-            _entries.Add(entry);
+            _journal._entries.Add(entry);
 
             Console.WriteLine();
         }
@@ -69,13 +67,9 @@ public class Menu
             Console.Write("Journal Name >> ");
             _journal._fileName = Console.ReadLine();
             
-            foreach (Entry entry in _entries)
-            {
-                _journal._currentEntry = entry.PrettyText();
-                _journal.Save();
-            }
+            _journal.Save();
 
-            Console.WriteLine($"Entries uccessfully saved to {_journal._fileName}.");
+            Console.WriteLine($"Entries successfully saved to {_journal._fileName}.");
             Console.WriteLine();
 
         }
