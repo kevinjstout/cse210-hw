@@ -4,7 +4,7 @@ public class Menu
 
     public bool _quit = false;
 
-    public Entry _entry = new();
+    public List<Entry> _entries = new List<Entry>();
 
     public Journal _journal = new();
 
@@ -14,7 +14,7 @@ public class Menu
         Console.WriteLine("| Please make a selection based on what you'd like to do. (Enter an integer.)|");
         Console.WriteLine("| 1. Get prompt and respond.                                                 |");
         Console.WriteLine("| 2. Open journal.                                                           |");
-        Console.WriteLine("| 3. Save most recent prompt to journal (appends to or creates a file).      |");
+        Console.WriteLine("| 3. Save journal (replaces or creates a file).                              |");
         Console.WriteLine("| 4. Merge two (pre-existing) journals.                                      |");
         Console.WriteLine("| 5. Quit                                                                    |");
         Console.WriteLine(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -35,12 +35,19 @@ public class Menu
     {
         if (_input == 1)
         {  
-            string prompt = _entry.GeneratePrompt();
+            Entry entry = new();
 
-            _entry._prompt = prompt;
+            string prompt = entry.GeneratePrompt();
+
+            entry._prompt = prompt;
+
             Console.WriteLine(prompt);
+
             Console.Write("Response >> ");
-            _entry._content = Console.ReadLine();
+            entry._content = Console.ReadLine();
+
+            _entries.Add(entry);
+
             Console.WriteLine();
         }
 
@@ -62,11 +69,15 @@ public class Menu
             Console.Write("Journal Name >> ");
             _journal._fileName = Console.ReadLine();
             
-            _journal._currentEntry = _entry.PrettyText();
-            _journal.Save();
+            foreach (Entry entry in _entries)
+            {
+                _journal._currentEntry = entry.PrettyText();
+                _journal.Save();
+            }
 
-            Console.WriteLine($"Most recent entry successfully saved to {_journal._fileName}.");
+            Console.WriteLine($"Entries uccessfully saved to {_journal._fileName}.");
             Console.WriteLine();
+
         }
 
         if (_input == 4)

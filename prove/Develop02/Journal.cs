@@ -26,7 +26,7 @@ public class Journal
     {
         try
         {
-            using (StreamWriter outputFile = new StreamWriter(_fileName, true))
+            using (StreamWriter outputFile = new StreamWriter(_fileName))
             {
                 outputFile.WriteLine(_currentEntry);
             }
