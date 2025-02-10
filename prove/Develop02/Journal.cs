@@ -49,7 +49,7 @@ public class Journal
 
                 foreach (string line in lines1)
                 {
-                    using (StreamWriter outputFile = new StreamWriter(mergedJournalName, true))
+                    using (StreamWriter outputFile = new StreamWriter(mergedJournalName))
                     {
                         outputFile.WriteLine(line);
                     };
