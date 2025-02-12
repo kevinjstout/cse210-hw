@@ -6,5 +6,19 @@ public class Scripture
 
     private List<int> _remainingWords = new List<int>();
 
-    
+    public void Scripture()
+    {
+
+    }
+
+    public void Display()
+    {
+
+    }
+
+    public void RemoveWord()
+    {
+        
+    }
+
 }
