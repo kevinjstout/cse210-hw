@@ -1,25 +1,19 @@
+using System.ComponentModel;
+
 public class Word
 {
     private int _length;
 
     private string _word;
 
-    public void Word()
-    {
+    private bool _isHidden = false;
 
-    }
-    
-    public int GetLength()
+    public Word()
     {
 
     }
 
     public string GetWord()
-    {
-
-    }
-
-    public string BlankWord()
     {
         
     }

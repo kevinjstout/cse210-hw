@@ -8,13 +8,16 @@ public class Reference
 
     private int _endingVerse;
 
-    public void Reference()
+    public Reference(string book, int chapter, int startingVerse, int endingVerse = 0)
     {
-
+        if (endingVerse == 0)
+        {
+            
+        }
     }
 
     public string GetFull()
     {
-        
+
     }
 }
