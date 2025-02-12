@@ -13,12 +13,12 @@ public class Scripture
 
     public void Display()
     {
-
+        
     }
 
     public void RemoveWord()
     {
-        
+
     }
 
 }
