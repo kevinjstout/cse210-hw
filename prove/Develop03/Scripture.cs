@@ -8,7 +8,7 @@ public class Scripture
 
     public Scripture(Reference reference, string text)
     {
-
+        Reference _reference = reference;
 
         List<string> textSplitBySpaces = new List<string>(text.Split(" "));
 
