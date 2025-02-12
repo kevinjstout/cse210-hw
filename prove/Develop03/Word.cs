@@ -6,7 +6,7 @@ public class Word
 
     public void Word()
     {
-        
+
     }
     
     public int GetLength()
@@ -17,5 +17,10 @@ public class Word
     public string GetWord()
     {
 
+    }
+
+    public string BlankWord()
+    {
+        
     }
 }
