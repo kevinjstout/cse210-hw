@@ -8,13 +8,34 @@ public class Word
 
     private bool _isHidden = false;
 
-    public Word()
+    public Word(int length, string word)
     {
+        _length = length;
 
+        _word = word;
     }
 
     public string GetWord()
     {
-        
+        if (_isHidden == false)
+        {
+            return _word;
+        }
+        else
+        {
+            string empty = "";
+
+            for (int i = 0; i <= _length; i++)
+            {
+                empty = empty + "_";
+            }
+
+            return empty;
+        }
+    }
+
+    public void SetHidden()
+    {
+        _isHidden = true;
     }
 }

@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Scripture scripture = new Scripture(new Reference("3 Nephi", 3, 7),
+        Scripture scripture = new Scripture("3 Nephi", 3, 7,
                                             "Or in other words, yield yourselves up unto us, and unite with us"
                                             + " and become acquainted with our secret works, and become our brethren that ye"
                                             + " may be like unto us—not our slaves, but our brethren and partners of all our" 
