@@ -8,6 +8,7 @@ public class Reference
 
     private int? _endingVerse = null;
 
+    // Constructer without an ending verse.
     public Reference(string book, int chapter, int startingVerse)
     {
         _book = book;
@@ -17,6 +18,7 @@ public class Reference
         _startingVerse = startingVerse;
     }
 
+    // Constructer with an ending verse.
     public Reference(string book, int chapter, int startingVerse, int endingVerse)
     {
         _book = book;

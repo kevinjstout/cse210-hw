@@ -1,11 +1,14 @@
+using System.ComponentModel;
+
 public class Scripture
 {
     private Reference _reference;
 
-    private List<Word> _scriptureText = new List<Word>();
+    private List<Word> _verseText = new List<Word>();
 
     private List<int> _remainingWordsIndices = new List<int>();
 
+    // Constructer with an ending verse.
     public Scripture(string book, int chapter, int startingVerse, int endingVerse, string text)
     {
         _reference = new Reference(book, chapter, startingVerse, endingVerse);
@@ -18,8 +21,7 @@ public class Scripture
         {
             Word objectVersionOfWord = new Word(word.Length, word);
 
-            _scriptureText.Add(objectVersionOfWord);
-
+            _verseText.Add(objectVersionOfWord);
 
             _remainingWordsIndices.Add(remainingWordsIndex);
 
@@ -27,6 +29,7 @@ public class Scripture
         }
     }
 
+    // Constructer without an ending verse.
     public Scripture(string book, int chapter, int startingVerse, string text)
     {
         _reference = new Reference(book, chapter, startingVerse);
@@ -39,7 +42,7 @@ public class Scripture
         {
             Word objectVersionOfWord = new Word(word.Length, word);
 
-            _scriptureText.Add(objectVersionOfWord);
+            _verseText.Add(objectVersionOfWord);
 
 
             _remainingWordsIndices.Add(remainingWordsIndex);
@@ -53,14 +56,25 @@ public class Scripture
         Console.Clear();
 
         string text = "";
-        foreach (Word word in _scriptureText)
+
+        int wrapLineCounter = 0;
+
+        Console.Write(_reference.GetFull());
+
+        foreach (Word word in _verseText)
         {
             text = text + $" {word.GetWord()}";
+
+            wrapLineCounter++;
+            if (wrapLineCounter == 24)
+            {
+                Console.WriteLine(text);
+
+                wrapLineCounter = 0;
+
+                text = "";
+            }
         }
-
-        string scriptureString = $"{_reference.GetFull()} {text}";
-
-        Console.WriteLine(scriptureString);
     }
 
     public void RemoveWord()
@@ -71,7 +85,7 @@ public class Scripture
 
         int wordIndex = _remainingWordsIndices[indexIndex];
 
-        _scriptureText[wordIndex].SetHidden();
+        _verseText[wordIndex].SetHidden();
 
         _remainingWordsIndices.RemoveAt(indexIndex);
     }
@@ -99,5 +113,4 @@ public class Scripture
             }
         }
     }
-
 }
