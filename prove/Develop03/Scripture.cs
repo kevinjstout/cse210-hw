@@ -67,13 +67,37 @@ public class Scripture
     {
         Random rand = new Random();
 
-        int indexIndex = rand.Next(0, _remainingWordsIndices.Count+1);
+        int indexIndex = rand.Next(0, _remainingWordsIndices.Count);
 
-        int index = _remainingWordsIndices[indexIndex];
+        int wordIndex = _remainingWordsIndices[indexIndex];
 
-        _scriptureText[index].SetHidden();
+        _scriptureText[wordIndex].SetHidden();
 
         _remainingWordsIndices.RemoveAt(indexIndex);
+    }
+
+    public int GetRemainingWordCount()
+    {
+        return _remainingWordsIndices.Count;
+    }
+
+    public void Iterate(int inputNumber)
+    {
+        if (GetRemainingWordCount() > inputNumber)
+            {
+                for (int i = 0; i < inputNumber; i++)
+                {
+                    RemoveWord();
+                }
+            }
+        else
+        {
+            int count = GetRemainingWordCount();
+            for (int i = 0; i < count; i++)
+            {
+                RemoveWord();
+            }
+        }
     }
 
 }

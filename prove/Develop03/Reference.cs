@@ -28,11 +28,6 @@ public class Reference
         _endingVerse = endingVerse;
     }
 
-    public Reference()
-    {
-        // creates empty reference, used in initializing the journal
-    }
-
     public string GetFull()
     {
         if (_endingVerse == null)

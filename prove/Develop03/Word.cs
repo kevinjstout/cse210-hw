@@ -25,7 +25,7 @@ public class Word
         {
             string empty = "";
 
-            for (int i = 0; i <= _length; i++)
+            for (int i = 0; i < _length; i++)
             {
                 empty = empty + "_";
             }
