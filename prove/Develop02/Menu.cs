@@ -11,10 +11,11 @@ public class Menu
         Console.WriteLine(" ____________________________________________________________________________");
         Console.WriteLine("| Please make a selection based on what you'd like to do. (Enter an integer.)|");
         Console.WriteLine("| 1. Get prompt and respond.                                                 |");
-        Console.WriteLine("| 2. Open journal.                                                           |");
-        Console.WriteLine("| 3. Save journal (replaces or creates a file).                              |");
-        Console.WriteLine("| 4. Merge two (pre-existing) journals.                                      |");
-        Console.WriteLine("| 5. Quit                                                                    |");
+        Console.WriteLine("| 2. Display current journal prompts and entries.                            |");
+        Console.WriteLine("| 3. Open journal.                                                           |");
+        Console.WriteLine("| 4. Save journal (replaces or creates a file).                              |");
+        Console.WriteLine("| 5. Merge two (pre-existing) journals.                                      |");
+        Console.WriteLine("| 6. Quit                                                                    |");
         Console.WriteLine(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         Console.Write("Selection >> ");
@@ -51,6 +52,14 @@ public class Menu
 
         if (_input == 2)
         {
+            foreach (Entry entry in _journal._entries)
+            {
+                Console.WriteLine(entry.PrettyText());
+            }
+        }
+
+        if (_input == 3)
+        {
             Console.WriteLine("Please enter journal text file name (in this format: example.txt).");
             Console.Write("Journal Name >> ");
             _journal._fileName = Console.ReadLine();
@@ -61,7 +70,7 @@ public class Menu
             Console.WriteLine();
         }
 
-        if (_input == 3)
+        if (_input == 4)
         {
             Console.WriteLine("Please enter journal text file name (in this format: example.txt) to save the entry to.");
             Console.Write("Journal Name >> ");
@@ -74,7 +83,7 @@ public class Menu
 
         }
 
-        if (_input == 4)
+        if (_input == 5)
         {
             Console.WriteLine("Please enter first journal text file name (in this format: example.txt) to merge.");
             Console.Write("First Journal Name >> ");
@@ -91,13 +100,13 @@ public class Menu
             _journal.Merge(firstJournal, secondJournal, mergedJournalName);
         }
 
-        if (_input == 5)
+        if (_input == 6)
         {
             Console.WriteLine("Thanks for stopping by!");
             _quit = true;
         }
 
-        if ((_input != 0) & (_input != 1) & (_input != 2) & (_input != 3) & (_input != 4) & (_input != 5))
+        if ((_input != 0) & (_input != 1) & (_input != 2) & (_input != 3) & (_input != 4) & (_input != 5) & (_input != 6))
         {
             Console.WriteLine("Not a valid response, please try something else.");
             Console.WriteLine();

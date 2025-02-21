@@ -46,24 +46,26 @@ public class Journal
         try
         {
             string[] lines1 = System.IO.File.ReadAllLines(firstJournal);
-
+                
+            using (StreamWriter outputFile = new StreamWriter(mergedJournalName))
+            {
                 foreach (string line in lines1)
                 {
-                    using (StreamWriter outputFile = new StreamWriter(mergedJournalName))
-                    {
-                        outputFile.WriteLine(line);
-                    };
+                    outputFile.WriteLine(line);
                 }
+            };
+                
             
             string[] lines2 = System.IO.File.ReadAllLines(secondJournal);
 
+            using (StreamWriter outputFile = new StreamWriter(mergedJournalName, true))
+            {
                 foreach (string line in lines2)
                 {
-                    using (StreamWriter outputFile = new StreamWriter(mergedJournalName, true))
-                    {
-                        outputFile.WriteLine(line);
-                    };
+                    outputFile.WriteLine(line);
                 }
+            };
+
         }
         catch
         {
