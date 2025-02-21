@@ -21,11 +21,11 @@ public class Journal
 
                 string date = splitByDashPrompt[0];
 
-                List<string> splitCommaEntry = line.Split(", Entry: ").ToList();
+                List<string> splitByCommaEntry = splitByDashPrompt[1].Split(", Entry: ").ToList();
 
-                string prompt = splitCommaEntry[0];
+                string prompt = splitByCommaEntry[0];
 
-                string content = splitCommaEntry[1];
+                string content = splitByCommaEntry[1];
                 
                 Entry entry = new Entry();
                 entry._date = date;
