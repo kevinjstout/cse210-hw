@@ -29,7 +29,7 @@ public class Entry
         };
 
         Random rnd = new Random();
-        int selection = rnd.Next(1, 10);
+        int selection = rnd.Next(0, 9);
 
         return prompts[selection];
     }

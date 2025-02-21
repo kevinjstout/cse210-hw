@@ -10,9 +10,29 @@ public class Journal
         {
             string[] lines = System.IO.File.ReadAllLines(_fileName);
 
+            _entries = new List<Entry>();
+
             foreach (string line in lines)
             {
                 Console.WriteLine(line);
+
+
+                List<string> splitByDashPrompt = line.Split(" - Prompt: ").ToList();
+
+                string date = splitByDashPrompt[0];
+
+                List<string> splitCommaEntry = line.Split(", Entry: ").ToList();
+
+                string prompt = splitCommaEntry[0];
+
+                string content = splitCommaEntry[1];
+                
+                Entry entry = new Entry();
+                entry._date = date;
+                entry._prompt = prompt;
+                entry._content = content;
+
+                _entries.Add(entry);
             }
         }
         catch
