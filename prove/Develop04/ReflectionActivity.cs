@@ -4,7 +4,7 @@ class ReflectionActivity : Activity
 
     private List<string> _promptsAboutExp;
 
-    public ReflectionActivity(string name, string description, List<string> experiences, List<string> promptsAbExp) : base(name, description)
+    public ReflectionActivity(string name, string description, List<string> experiences, List<string> promptsAboutExperiences) : base(name, description)
     {
 
     }
