@@ -19,7 +19,9 @@ class Program
 
             if (choice == "1") // BREATHING ACTIVITY
             {
-
+                BreathingActivity breathingActivity = new BreathingActivity("Breathing Activity", "This activity will help you relax by walking your 
+                                                                  + "through breathing in and out slowly. Clear your mind"
+                                                                  + "and focus on your breathing.");
             }
 
             else if (choice == "2") // REFLECTION ACTIVITY
