@@ -1,9 +1,16 @@
 namespace Develop04;
 using System;
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 class Program
 {
+    // ADDED FEATURES FOR EXCEEDING REQUIREMENTS:
+    // - Added activity counter.
+    // - Added goal tracker.
+    // Both are listed in option 5 of the menu.
+    
+    
     static void Main(string[] args)
     {
         bool running = true;
