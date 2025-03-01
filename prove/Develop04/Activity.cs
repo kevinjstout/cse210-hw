@@ -1,3 +1,5 @@
+using System.Diagnostics.Metrics;
+
 class Activity
 {
     protected string _name;
@@ -5,8 +7,6 @@ class Activity
     protected string _description;
 
     protected int _duration;
-
-    private DateTime _startTime;
 
     public Activity(string name, string description)
     {
@@ -17,22 +17,60 @@ class Activity
 
     public void Welcome()
     {
-        Console.WriteLine($"Welcome to the {_name}. {_description} How long would you like to do this activity?");
+        Console.Clear();
+        
+        Console.WriteLine($"Welcome to the {_name}.");
+        Console.WriteLine();
 
+        Console.WriteLine(_description);
+        Console.WriteLine();
+
+        Console.WriteLine("How long (in seconds) would you like to do this activity?");
+        
         _duration = int.Parse(Console.ReadLine());
 
-        Pause(3)
+        Console.WriteLine();
+        Console.WriteLine("Prepare to begin the activity.");
+
+        Pause(3);
+
+        Console.WriteLine();
     }
 
     public void Conclude()
     {
-        Console.WriteLine($"You are done. Thank you for doing the {_name}.");
+        Console.WriteLine();
+        Console.WriteLine("You are done, good job.");
+
+        Pause(2);
+        
+        Console.WriteLine();
+        Console.WriteLine($"Thank you for completing the {_name}. You did this activity for {_duration} seconds.");
+
+        Pause(3);
+
+        Console.Clear();
     }
 
     public void Pause(int duration)
     {
-        // Whenever the application pauses it should show some kind 
-        // of animation to the user, such as a spinner, a countdown timer, 
-        // or periods being displayed to the screen.
+        DateTime currentTime = DateTime.Now;
+        DateTime futureTime = currentTime.AddSeconds(duration);
+
+        List<string> frames = new List<string> {"|", "/", "—", "\\"};
+        int counter = 0;
+
+        while (currentTime < futureTime)
+        {
+            counter ++;
+
+            Console.Write("\b" + frames[counter % 4]);
+            
+            Thread.Sleep(300);
+
+            currentTime = DateTime.Now;
+        }
+
+        Console.Write("\b \b");
     }
 }
