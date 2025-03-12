@@ -4,6 +4,10 @@ using System.IO;
 
 class Program
 {
+    // ADDED FEATURES FOR FULL CREDIT
+    /// - Added a counter to count how many goals you marked in the current session.
+    /// - 
+    
     static void Main(string[] args)
     {
         bool quit = false;
@@ -11,10 +15,13 @@ class Program
         List<Goal> goals = new List<Goal>();
 
         int points = 0;
+
+        int goalsMarkedThisSession = 0;
         
         while (quit == false)
         {           
             Console.WriteLine($"You have {points} points.");
+            Console.WriteLine($"You have marked {goalsMarkedThisSession} goals this session.");
             Console.WriteLine();
             Console.WriteLine("Input the number corresponding to your desired action:");
             Console.WriteLine("1. Create a new goal");
@@ -156,6 +163,8 @@ class Program
                 if (goals[goalIndex-1].GetGoalStatus() == false)
                 {
                     points += goals[goalIndex-1].Mark();
+
+                    goalsMarkedThisSession++;
                 }
                 else
                 {
