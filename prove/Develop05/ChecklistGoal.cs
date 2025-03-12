@@ -6,8 +6,8 @@ public class ChecklistGoal : Goal
 
     private int _neededNumOfMarks;
     
-    public ChecklistGoal(string name, string description, int pointsPerMark, 
-                        int pointsOnCompletion, int numOfMarks, int neededNumOfMarks) : base(name, description, pointsPerMark)
+    public ChecklistGoal(string name, string description, int pointsPerMark, bool isDone,
+                        int pointsOnCompletion, int numOfMarks, int neededNumOfMarks) : base(name, description, pointsPerMark, isDone)
     {
         _pointsOnCompletion = pointsOnCompletion;
 
@@ -22,6 +22,8 @@ public class ChecklistGoal : Goal
         
         if (_numOfMarks == _neededNumOfMarks)
         {
+            _isDone = true;
+            
             return _pointsOnCompletion + _pointsPerMark;
         }
         else

@@ -8,7 +8,7 @@ public abstract class Goal
 
     protected int _pointsPerMark;
 
-    public Goal(string name, string description, int pointsPerMark)
+    public Goal(string name, string description, int pointsPerMark, bool isDone)
     {
         _name = name;
 
@@ -16,7 +16,7 @@ public abstract class Goal
 
         _pointsPerMark = pointsPerMark;
 
-        _isDone = false;
+        _isDone = isDone;
     }
 
     public abstract int Mark();
@@ -34,4 +34,9 @@ public abstract class Goal
     }
 
     public abstract string Save();
+
+    public bool GetGoalStatus()
+    {
+        return _isDone;
+    }
 }
