@@ -6,7 +6,7 @@ class Program
 {
     // ADDED FEATURES FOR FULL CREDIT
     /// - Added a counter to count how many goals you marked in the current session.
-    /// - 
+    /// - Added a tracker to keep track of how many of each goals you have. 
     
     static void Main(string[] args)
     {
@@ -20,8 +20,32 @@ class Program
         
         while (quit == false)
         {           
+            int simpleGoalCounter = 0;
+            int eternalGoalCounter = 0;
+            int checklistGoalCounter = 0;
+            
+            foreach (Goal goal in goals)
+            {
+                string goalType = goal.GetType().ToString();
+
+                if (goalType == "SimpleGoal")
+                {
+                    simpleGoalCounter++;
+                }
+                else if (goalType == "EternalGoal")
+                {
+                    eternalGoalCounter++;
+                }
+                else if (goalType == "ChecklistGoal")
+                {
+                    checklistGoalCounter++;
+                }
+            }
+            
             Console.WriteLine($"You have {points} points.");
-            Console.WriteLine($"You have marked {goalsMarkedThisSession} goals this session.");
+            Console.WriteLine($"You have marked {goalsMarkedThisSession} goal(s) this session.");
+            Console.WriteLine($"You currently have {simpleGoalCounter} simple goal(s), " + 
+                              $"{eternalGoalCounter} eternal goal(s), and {checklistGoalCounter} checklist goal(s) in your list.");
             Console.WriteLine();
             Console.WriteLine("Input the number corresponding to your desired action:");
             Console.WriteLine("1. Create a new goal");
@@ -91,6 +115,9 @@ class Program
                     
                     Console.WriteLine($"{num}. {goal.PrettyText()}");
                 }
+                
+                Console.Write("Press enter to continue >> ");
+                Console.ReadLine();
             }
             else if (input == "3")
             {
