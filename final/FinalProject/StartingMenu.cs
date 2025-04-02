@@ -1,6 +1,6 @@
 public class StartingMenu : Menu
 {
-    public override void Display()
+    public override void Display(string loser)
     {
         string menuText = 
                         """
@@ -30,10 +30,21 @@ public class StartingMenu : Menu
             Console.Write(lines[i]);
         }
 
-        Console.Write("Right now, all you can do is use A and D to move.");
-        Console.Write("Press Enter to being: ");
-        Console.ReadLine();
+        Console.WriteLine();
+        
+        Console.WriteLine("           INSTRUCTIONS");
+        Console.WriteLine("           Press A, W, and D to move. Press Q to punch.");
+        Console.WriteLine("           You have 3 lives. Defeat the AI by punching him 3 times, ");
+        Console.WriteLine("           while evading his own punches.");
 
-        base._isRunning = false;
+        Console.WriteLine();
+
+        Console.Write("           Press Enter to begin, or type \"Q\" to quit: ");
+        string input = Console.ReadLine();
+
+        if (input == "Q")
+        {
+            _isQuit = true;
+        }
     }
 }
