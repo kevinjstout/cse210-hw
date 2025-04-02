@@ -47,4 +47,22 @@ public class StartingMenu : Menu
             _isQuit = true;
         }
     }
+
+    public bool IsQuit()
+    {
+        return _isQuit;
+    }
+
+    public void Quit()
+    {
+        _isQuit = true;
+    }
+    
+    public void Fail()
+    {
+        Console.Clear();
+        Console.WriteLine("Sorry, we ran into an error. It may be that you need to resize your terminal before ");
+        Console.WriteLine("playing the program (so that the game fits). Please try again!");
+        Console.WriteLine();
+    }
 }

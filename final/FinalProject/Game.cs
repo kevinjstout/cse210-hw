@@ -48,6 +48,7 @@ public class Game
                          |   |
                          |   |
                          |___|
+
                         """);
         Thread.Sleep(1000);
 
@@ -132,6 +133,7 @@ public class Game
 
         // AI STUFF
         bool aiPunch = _ai.RandomAction(_player.GetCoordinates()[0]);
+        
         if (aiPunch)
         {
             if (_player.GetHealth() > 1)

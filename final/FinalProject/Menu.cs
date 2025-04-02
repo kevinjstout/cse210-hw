@@ -8,9 +8,4 @@ public abstract class Menu
     }
     
     public abstract void Display(string loser);
-
-    public bool IsQuit()
-    {
-        return _isQuit;
-    }
 }
