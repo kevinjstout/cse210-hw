@@ -30,7 +30,7 @@ public class DeathMenu : Menu
         }
 
         Console.WriteLine();
-        Console.Write("Press Enter to Return to the Menu: ");
+        Console.Write("Press Enter to return to the menu: ");
         Console.ReadLine();
 
         Console.Clear();

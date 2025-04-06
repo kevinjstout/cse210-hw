@@ -10,8 +10,8 @@ public class Animation
 
     string _currentFrameSet;
 
-    private string dFrame = "2";
-    private string aFrame = "4";
+    private string _dFrame = "2";
+    private string _aFrame = "4";
 
     public Animation(List<string> runningFrames, List<string> jumpingFrames, List<string> punchingFrames)
     {
@@ -33,17 +33,17 @@ public class Animation
 
             if (milliseconds % 3 == 0)
             {
-                if (dFrame == "2")
+                if (_dFrame == "2")
                 {
-                    dFrame = "3";
+                    _dFrame = "3";
                 } 
                 else
                 {
-                    dFrame = "2";
+                    _dFrame = "2";
                 }
             }
             
-            _runningFrames[0] = dFrame;
+            _runningFrames[0] = _dFrame;
         }
         else if (key == "A")
         {
@@ -54,16 +54,16 @@ public class Animation
 
             if (milliseconds % 3 == 0)
             {
-                if (aFrame == "4")
+                if (_aFrame == "4")
                 {
-                    aFrame = "5";
+                    _aFrame = "5";
                 } 
                 else
                 {
-                    aFrame = "4";
+                    _aFrame = "4";
                 }
 
-                _runningFrames[0] = aFrame;
+                _runningFrames[0] = _aFrame;
             }
         }
         else if (key == "jump")
